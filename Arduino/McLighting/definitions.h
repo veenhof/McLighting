@@ -9,12 +9,12 @@
 #define BUILTIN_LED 2    // ESP-12F has the built in LED on GPIO2, see https://github.com/esp8266/Arduino/issues/2192
 #define BUTTON 4         // Input pin (4 / D2) for switching the LED strip on / off, connect this PIN to ground to trigger button.
 
-#define HOSTNAME "McLighting01"   // Friedly hostname
+#define HOSTNAME "LED_lamp_Gang"   // Friedly hostname
 
 #define HTTP_OTA             // If defined, enable ESP8266HTTPUpdateServer OTA code.
 //#define ENABLE_OTA         // If defined, enable Arduino OTA code.
-#define ENABLE_AMQTT         // If defined, enable Async MQTT code, see: https://github.com/marvinroger/async-mqtt-client
-//#define ENABLE_MQTT        // If defined, enable MQTT client code, see: https://github.com/toblum/McLighting/wiki/MQTT-API
+//#define ENABLE_AMQTT         // If defined, enable Async MQTT code, see: https://github.com/marvinroger/async-mqtt-client
+#define ENABLE_MQTT        // If defined, enable MQTT client code, see: https://github.com/toblum/McLighting/wiki/MQTT-API
 #define ENABLE_HOMEASSISTANT // If defined, enable Homeassistant integration, ENABLE_MQTT or ENABLE_AMQTT must be active
 #define ENABLE_BUTTON        // If defined, enable button handling code, see: https://github.com/toblum/McLighting/wiki/Button-control
 //#define MQTT_HOME_ASSISTANT_SUPPORT // If defined, use AMQTT and select Tools -> IwIP Variant -> Higher Bandwidth
@@ -33,8 +33,8 @@
 //#define WIFIMGR_SET_MANUAL_IP
 
 #ifdef WIFIMGR_SET_MANUAL_IP
-  uint8_t _ip[4] = {192,168,0,128};
-  uint8_t _gw[4] = {192,168,0,1};
+  uint8_t _ip[4] = {192,168,2,126};
+  uint8_t _gw[4] = {192,168,2,254};
   uint8_t _sn[4] = {255,255,255,0};
 #endif
 
@@ -103,10 +103,10 @@ uint32_t autoParams[][4] = {  // color, speed, mode, duration (milliseconds)
     const char mqtt_clientid[] = HOSTNAME;
   #endif
 
-  char mqtt_host[64] = "";
-  char mqtt_port[6] = "";
-  char mqtt_user[32] = "";
-  char mqtt_pass[32] = "";
+  char mqtt_host[64] = "192.168.2.175";
+  char mqtt_port[6] = "1883";
+  char mqtt_user[32] = "openhabian";
+  char mqtt_pass[32] = "100%Volkswagen";
 #endif
 
 
